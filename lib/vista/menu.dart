@@ -1,11 +1,13 @@
-class menuPageView extends StatefulWidget {
-  const menuPageView({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+
+class menuPage extends StatefulWidget {
+  menuPage({Key? key}) : super(key: key);
 
   @override
-  State<menuPageView> createState() => _menuPageViewState();
+  State<menuPage> createState() => _menuPageState();
 }
 
-class _menuPageViewState extends State<menuPageView> {
+class _menuPageState extends State<menuPage> {
   @override
   Widget build(BuildContext context) {
     return Container();
