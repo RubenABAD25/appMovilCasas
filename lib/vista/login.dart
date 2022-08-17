@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:html';
 
 // import 'package:app_login/modelo/usuario.dart';
 // import 'package:app_login/servicio/servicio.dart';
@@ -22,8 +23,10 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     //final Servicio loginService = Servicio();
+    //final sesionBloc = BlocProvider.of<SesionBloc>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF941E69),
         title: Text('Ingreso'),
         centerTitle: true,
       ),
@@ -31,6 +34,10 @@ class _InputPageState extends State<InputPage> {
         child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: <Widget>[
+              Image.asset(
+                'assets/images/logo.png',
+                width: MediaQuery.of(context).size.width * 0.9,
+              ),
               _crearEmail(),
               Divider(),
               _crearPassword(),
@@ -45,7 +52,7 @@ class _InputPageState extends State<InputPage> {
                   //loginService.login(u);
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.blue, shape: StadiumBorder()),
+                    primary: Color(0xFF941E69), shape: StadiumBorder()),
               ),
             ]),
       ),
