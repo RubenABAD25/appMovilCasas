@@ -88,7 +88,11 @@ class _InputPageState extends State<InputPage> {
           hintText: 'Correo de la Persona',
           labelText: 'Email',
           helperText: 'Solo es de Ingresar correo',
-          icon: Icon(Icons.alternate_email)),
+          icon: Icon(
+            Icons.alternate_email,
+            color: Color(0xFFF229A8),
+          ),
+          hintStyle: TextStyle(color: Color(0xFFF229A8))),
       onChanged: (aux) => setState(() {
         valorEmail = aux;
       }),
