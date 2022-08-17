@@ -31,6 +31,7 @@ class _MenuPageState extends State<MenuPage> {
       //     ),
       //   ),
       // ),
+
       body: tabs[valCambio],
       bottomNavigationBar: _crearBotonNavegator(),
       //floatingActionButton: _crearBotones(),
@@ -41,13 +42,13 @@ class _MenuPageState extends State<MenuPage> {
   Widget _crearBotonNavegator() {
     return BottomNavigationBar(
       currentIndex: valCambio,
-      backgroundColor: Color(0xFF941E69),
+      backgroundColor: Color(0xFFF229A8),
       iconSize: 25,
       selectedFontSize: 20,
       unselectedFontSize: 18,
       showUnselectedLabels: true,
       selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.blueGrey,
+      unselectedItemColor: Colors.tealAccent,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Informacion'),
         BottomNavigationBarItem(

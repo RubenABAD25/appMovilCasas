@@ -26,7 +26,7 @@ class _InputPageState extends State<InputPage> {
     //final sesionBloc = BlocProvider.of<SesionBloc>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF941E69),
+        backgroundColor: Color(0xFFF229A8),
         title: Text('Ingreso'),
         centerTitle: true,
       ),
@@ -55,12 +55,12 @@ class _InputPageState extends State<InputPage> {
                   } else {
                     if (correo.text.trim() == 'esteban93abad23@gmail.com' ||
                         pass.text.trim() == '123456') {
-                      const snackBar = SnackBar(
-                        content: Text('Datos Correctos'),
-                        duration: Duration(seconds: 2),
-                        backgroundColor: Colors.green,
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      // const snackBar = SnackBar(
+                      //   content: Text('Datos Correctos'),
+                      //   duration: Duration(seconds: 2),
+                      //   backgroundColor: Colors.green,
+                      // );
+                      // ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -72,7 +72,7 @@ class _InputPageState extends State<InputPage> {
                   //loginService.login(u);
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF941E69), shape: StadiumBorder()),
+                    primary: Color(0xFFF229A8), shape: StadiumBorder()),
               ),
             ]),
       ),

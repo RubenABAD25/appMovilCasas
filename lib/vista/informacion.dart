@@ -12,6 +12,7 @@ class _InformacionPageState extends State<InformacionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFFF229A8),
         title: Text('Informacion'),
         centerTitle: true,
       ),
