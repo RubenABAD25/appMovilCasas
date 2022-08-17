@@ -84,15 +84,18 @@ class _InputPageState extends State<InputPage> {
       controller: correo,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Correo de la Persona',
-          labelText: 'Email',
-          helperText: 'Solo es de Ingresar correo',
-          icon: Icon(
-            Icons.alternate_email,
-            color: Color(0xFFF229A8),
-          ),
-          hintStyle: TextStyle(color: Color(0xFFF229A8))),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFFF229A8))),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+        hintText: 'Correo de la Persona',
+        labelText: 'Email',
+        labelStyle: new TextStyle(color: Color(0xFFF229A8)),
+        helperText: 'Solo es de Ingresar correo',
+        icon: Icon(
+          Icons.alternate_email,
+          color: Color(0xFFF229A8),
+        ),
+      ),
       onChanged: (aux) => setState(() {
         valorEmail = aux;
       }),
@@ -104,11 +107,14 @@ class _InputPageState extends State<InputPage> {
       controller: pass,
       obscureText: true,
       decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Color(0xFFF229A8))),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
           hintText: 'Clave de la Persona',
           labelText: 'Clave',
+          labelStyle: new TextStyle(color: Color(0xFFF229A8)),
           helperText: 'Introduzca su clave',
-          icon: Icon(Icons.lock)),
+          icon: Icon(Icons.lock, color: Color(0xFFF229A8))),
       onChanged: (aux) => setState(() {
         mensaje = 'Ingreso';
       }),
