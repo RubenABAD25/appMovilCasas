@@ -1,9 +1,9 @@
 import 'dart:developer';
-import 'dart:html';
 
 // import 'package:app_login/modelo/usuario.dart';
 // import 'package:app_login/servicio/servicio.dart';
 import 'package:flutter/material.dart';
+import 'package:testfirebase/vista/menu.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -43,11 +43,31 @@ class _InputPageState extends State<InputPage> {
               _crearPassword(),
               Divider(),
               ElevatedButton(
-                child: Text('Mostrar Alerta'),
+                child: Text('Ingresar'),
                 onPressed: () {
+                  if (correo.text.isEmpty || pass.text.isEmpty) {
+                    const snackBar = SnackBar(
+                      content: Text('Datos incompletos'),
+                      duration: Duration(seconds: 2),
+                      backgroundColor: Colors.redAccent,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  } else {
+                    if (correo.text.trim() == 'esteban93abad23@gmail.com' ||
+                        pass.text.trim() == '123456') {
+                      const snackBar = SnackBar(
+                        content: Text('Datos Correctos'),
+                        duration: Duration(seconds: 2),
+                        backgroundColor: Colors.green,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MenuPage()));
+                    }
+                  }
                   //final u = new Usuario(email: correo.text, passwd: pass.text);
-                  log(correo.text);
-                  log(pass.text);
 
                   //loginService.login(u);
                 },
