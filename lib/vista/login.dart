@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 // import 'package:app_login/modelo/usuario.dart';
 // import 'package:app_login/servicio/servicio.dart';
 import 'package:flutter/material.dart';
