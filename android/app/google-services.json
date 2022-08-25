@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "379709730474",
+    "project_id": "venta-casas-db03a",
+    "storage_bucket": "venta-casas-db03a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379709730474:android:1c481269dd9e1b0b30aad3",
+        "android_client_info": {
+          "package_name": "com.casaventas.testfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379709730474-9ah1ha6oecgrv85cjefp9i2jir1vlioh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp3UaHOa0i9TRDOYzUk91DP6N-FHOMEAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "379709730474-9ah1ha6oecgrv85cjefp9i2jir1vlioh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
