@@ -4,8 +4,10 @@ import 'package:testfirebase/vista/informacion.dart';
 import 'package:testfirebase/vista/listadoCasas.dart';
 
 class MenuPage extends StatefulWidget {
-  const MenuPage({Key? key}) : super(key: key);
-
+  const MenuPage({Key? key, required this.g, required this.i})
+      : super(key: key);
+  final String g;
+  final String i;
   @override
   State<MenuPage> createState() => _MenuPageState();
 }
@@ -16,7 +18,10 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     List tabs = [
-      const InformacionPage(),
+      const InformacionPage(
+        gen: 'masc',
+        iden: 'h',
+      ),
       const ContactoPage(),
       const ListadoCasasPage(),
     ];

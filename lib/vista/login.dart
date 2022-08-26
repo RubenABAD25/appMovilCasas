@@ -1,5 +1,8 @@
 // import 'package:app_login/modelo/usuario.dart';
 // import 'package:app_login/servicio/servicio.dart';
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:testfirebase/vista/menu.dart';
 
@@ -14,8 +17,11 @@ class _InputPageState extends State<InputPage> {
   String valorEmail = '';
   String passwd = '';
   String mensaje = '';
-  TextEditingController correo = new TextEditingController();
-  TextEditingController pass = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController correo = new TextEditingController();
+  final TextEditingController pass = TextEditingController();
+  late bool _success;
+  late String _userEmail;
   //TextEditingController pass = TextEditingController();
 
   @override
@@ -28,51 +34,41 @@ class _InputPageState extends State<InputPage> {
         title: Text('Ingreso'),
         centerTitle: true,
       ),
-      body: Center(
-        child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-            children: <Widget>[
-              Image.asset(
-                'assets/images/logo.png',
-                width: MediaQuery.of(context).size.width * 0.9,
-              ),
-              _crearEmail(),
-              Divider(),
-              _crearPassword(),
-              Divider(),
-              ElevatedButton(
-                child: Text('Ingresar'),
-                onPressed: () {
-                  if (correo.text.isEmpty || pass.text.isEmpty) {
-                    const snackBar = SnackBar(
-                      content: Text('Datos incompletos'),
-                      duration: Duration(seconds: 2),
-                      backgroundColor: Colors.redAccent,
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  } else {
-                    if (correo.text.trim() == 'esteban93abad23@gmail.com' ||
-                        pass.text.trim() == '123456') {
-                      // const snackBar = SnackBar(
-                      //   content: Text('Datos Correctos'),
-                      //   duration: Duration(seconds: 2),
-                      //   backgroundColor: Colors.green,
-                      // );
-                      // ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MenuPage()));
+      body: Form(
+        key: _formKey,
+        child: Center(
+          child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+              children: <Widget>[
+                Image.asset(
+                  'assets/images/logo.png',
+                  width: MediaQuery.of(context).size.width * 0.9,
+                ),
+                _crearEmail(),
+                Divider(),
+                _crearPassword(),
+                Divider(),
+                ElevatedButton.icon(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      login();
                     }
-                  }
-                  //final u = new Usuario(email: correo.text, passwd: pass.text);
-
-                  //loginService.login(u);
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFF229A8), shape: StadiumBorder()),
-              ),
-            ]),
+                  },
+                  icon: Icon(
+                    Icons.lock_open,
+                    size: 24,
+                  ),
+                  label: Text(
+                    'Ingresar',
+                    style: TextStyle(fontSize: 24, color: Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFFF229A8),
+                    shape: StadiumBorder(),
+                  ),
+                ),
+              ]),
+        ),
       ),
     );
   }
@@ -117,5 +113,31 @@ class _InputPageState extends State<InputPage> {
         mensaje = 'Ingreso';
       }),
     );
+  }
+
+  Future login() async {
+    final usuario = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: correo.text.trim(), password: pass.text.trim()))
+        .user;
+    if (usuario != null) {
+      setState(() {
+        _success = true;
+        _userEmail = usuario.email;
+        log(_userEmail);
+        if (_userEmail == 'esteban93abad23@gmail.com' ||
+            _userEmail == 'cristhian19cd@gmail.com') {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MenuPage(g: 'masc.png', i: 'H')));
+        }
+      });
+    } else {
+      setState(() {
+        _success = false;
+        _userEmail = 'no existe';
+        log('no');
+      });
+    }
   }
 }
